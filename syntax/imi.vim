@@ -1,4 +1,4 @@
-" Vim Syntax for Imitator
+" Vim syntax for Imitator
 "
 " Author: Laure Petrucci
 " Created: 2018/02/27
@@ -11,14 +11,18 @@ if exists("b:current_syntax")
 endif
 
 " Define Imitator keywords
-syntax region imiComment start=/(\*/ end=/\*)/
-syntax region imiUpdates start=/{/ end=/}/
+syntax region imiUpdates matchgroup=None start=/{/ end=/}/
 syntax keyword imiConstant True False bad
 syntax keyword imiVarType var clock discrete parameter constant
-syntax keyword imiAutomaton automaton end
-syntax keyword imiLocation loc init urgent accepting
-syntax keyword imiInvariant invariant 
+syntax keyword imiAutomaton automaton  nextgroup=imiIdentifier skipwhite
+syntax keyword imiAutomaton end
+syntax keyword imiLocation init urgent accepting
+syntax keyword imiLocation loc nextgroup=imiIdentifier skipwhite
 syntax keyword imiTransition when sync do goto synclabs
+syntax keyword imiInvariant invariant while wait
+syntax match imiIdentifier '\i\+' contained
+
+" Define property keywords
 syntax keyword imiPropertyKw property
 syntax match imiQuantifier "#synth"
 syntax match imiQuantifier "#witness"
@@ -33,6 +37,8 @@ syntax match imiPattern "is in"
 syntax match imiPattern "is not in"
 syntax keyword imiPattern everytime once before within eventually next
 syntax keyword imiPattern sequence always
+
+" Operators
 syntax match imiOperator "\v\<\="
 syntax match imiOperator "\v\<"
 syntax match imiOperator "\v\>\="
@@ -45,21 +51,29 @@ syntax match imiOperator "\v\*"
 syntax match imiOperator "\v\/"
 syntax match imiOperator "\v\&"
 
-" Colours for these 
-highlight imiConstant cterm=italic
-highlight imiUpdates cterm=italic
-highlight imiComment ctermfg=grey
-" 214 is orange
-highlight imiVarType ctermfg=214
-highlight imiAutomaton cterm=bold ctermfg=black ctermbg=lightblue
-highlight imiLocation cterm=bold ctermfg=yellow
-highlight imiInvariant ctermfg=red
-highlight imiTransition ctermfg=magenta
-highlight imiOperator ctermfg=cyan
-highlight imiPropertyKw cterm=bold ctermfg=yellow
-highlight imiQuantifier cterm=bold ctermfg=yellow
-highlight imiProperty ctermbg=green ctermfg=red
-highlight imiPattern ctermfg=63
+" Comments
+syntax match imiComment '--.*'
+syntax region imiComment start=/(\*/ end=/\*)/
+
+" Colours for imitator keywords
+highlight default link imiIdentifier Identifier
+highlight default link imiConstant Constant
+highlight default link imiVarType Type
+highlight default link imiOperator Operator
+highlight default link imiAutomaton Special
+highlight default link imiUpdates Underlined
+highlight default link imiLocation Keyword
+highlight default link imiTransition Conditional
+highlight default link imiInvariant Repeat
+
+" Colours for property keywords
+highlight default link imiPropertyKw Special
+highlight default link imiQuantifier Macro
+highlight default link imiProperty Function
+highlight default link imiPattern Keyword
+
+" Colours for comments
+highlight default link imiComment Comment
 
 " set the current syntax
 let b:current_syntax = "imitator"

@@ -1,11 +1,11 @@
-" Vim Indentation for Imitator
+" Vim indentation for Imitator
 "
 " Author: Laure Petrucci
 " Created: 2018/02/28
 " Last modified:
 "
 
-"look if indent file has already been loaded
+" Look if indent file has already been loaded
 if exists("b:did_indent")
 	finish
 endif

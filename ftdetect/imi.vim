@@ -1,2 +1,4 @@
-autocmd BufRead,BufNewFile *.imi set filetype=imi
-autocmd BufRead,BufNewFile *.imiprop set filetype=imi
+" ftdetect/imi.vim
+
+autocmd BufRead,BufNewFile *.imi setfiletype imi
+autocmd BufRead,BufNewFile *.imiprop setfiletype imi
