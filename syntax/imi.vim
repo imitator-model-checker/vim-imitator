@@ -27,11 +27,12 @@ syntax keyword imiPropertyKw property
 syntax match imiQuantifier "#synth"
 syntax match imiQuantifier "#witness"
 syntax match imiQuantifier "#exhibit"
-syntax keyword imiProperty AF AGnot EFpmin EFpmax EFtmin inf_cycle
-syntax keyword imiProperty inf_cycle_through NZ_inf_cycle_check
-syntax keyword imiProperty NZ_inf_cycle_transform deadlockfree IM IMconvex
+syntax keyword imiProperty AF AGnot EFpmin EFpmax EFtmin Cycle Loop
+syntax keyword imiProperty CycleThrough LoopThrough NZ_Cycle
+syntax keyword imiProperty DeadlockFree IM InverseMethod
+syntax keyword imiProperty TracePreservation IMconvex
 syntax keyword imiProperty IMK IMunion PRP BCcover BCshuffle BCrandom
-syntax keyword imiProperty BCrandomseq PRPC
+syntax keyword imiProperty BCrandomseq PRPC pattern
 syntax match imiPattern "has happened"
 syntax match imiPattern "is in"
 syntax match imiPattern "is not in"
